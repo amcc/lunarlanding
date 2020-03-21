@@ -74,9 +74,9 @@ function draw() {
   smooth();
   blendMode(EXCLUSION);
   noStroke();
-  fill("blue")
-  circle(width / 2, height / 2, diameterRight);
   fill("red")
+  circle(width / 2, height / 2, diameterRight);
+  fill("blue")
   circle(x, y, moonDiameter);
   fill("green")
   circle(x2, y2, diameterLeft);
