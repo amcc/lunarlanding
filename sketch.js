@@ -29,7 +29,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(windowWidth, windowHeight);
 
   // connect to the volume/amplitude
   amp = new p5.Amplitude();
@@ -99,4 +99,8 @@ function draw() {
   //console.log("radius",lunarModuleRadius);
   //console.log("speed",lunarModuleSpeed);
   //console.log(millis());
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
