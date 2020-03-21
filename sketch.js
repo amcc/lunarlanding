@@ -11,7 +11,7 @@ let diameterRight;
 
 // orbital settings
 let moonDiameter = 100;
-let orbitRadius = 150;
+let orbitRadius;
 let orbitRadius2 = 200;
 let lunarModuleRadius = orbitRadius2;
 let angle = 0;
@@ -30,7 +30,8 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
+  orbitRadius = width > height ? height/3 : width/3
+  
   // connect to the volume/amplitude
   amp = new p5.Amplitude();
 
