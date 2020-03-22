@@ -23,6 +23,12 @@ let lunarModuleSpeed = speed2;
 // milliseconds till touchdown = 221000
 let touchdown = 221000
 
+// record start time
+let timer;
+let timeSinceStart;
+let startTime;
+let started = false;
+
 // preload the sound
 function preload() {
   sound = loadSound('apollo.mp3');
@@ -30,17 +36,17 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  orbitRadius = width > height ? height/3 : width/3
-  
+  orbitRadius = width > height ? height / 3 : width / 3
+
   // connect to the volume/amplitude
   amp = new p5.Amplitude();
-
-  playSound();
 }
 
 function playSound() {
   // play the song when its loaded
-  sound.play();
+  if (!started) {
+    sound.play();
+  }
 }
 
 function draw() {
@@ -84,24 +90,38 @@ function draw() {
   pop()
   angle += speed;
   angle2 += lunarModuleSpeed;
-  
+
   // reduce the radius and speed by a fraction
   // equal to the current milliseconds and the
   // total milliseconds till touchdown (contact light)
   // on the recording
-  
+
+  timeSinceStart = millis();
+  timer = timeSinceStart - startTime;
+
   if (lunarModuleRadius > moonDiameter) {
-    lunarModuleRadius = (orbitRadius2 * (touchdown-millis())/touchdown)+moonDiameter;
+    lunarModuleRadius = (orbitRadius2 * (touchdown - timer) / touchdown) + moonDiameter;
   }
   if (lunarModuleSpeed > speed) {
-    lunarModuleSpeed = (speed2 * (touchdown-millis())/touchdown) + speed;
+    lunarModuleSpeed = (speed2 * (touchdown - timer) / touchdown) + speed;
   }
-  
+
   //console.log("radius",lunarModuleRadius);
-  //console.log("speed",lunarModuleSpeed);
-  //console.log(millis());
+  // //console.log("speed",lunarModuleSpeed);
+  // console.log("millis", millis());
+  console.log("timer", timer);
+  console.log("startTime", startTime);
+  console.log("timeSinceStart", timeSinceStart);
 }
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+}
+
+function mousePressed() {
+  playSound()
+  if (!started) {
+    startTime = millis()
+  }
+  started = true;
 }
