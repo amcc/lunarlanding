@@ -108,14 +108,14 @@ function draw() {
     lunarModuleSpeed = (speed2 * (touchdown - timer) / touchdown) + speed;
   }
 
-  console.log("speed2",speed2);
-  console.log("touchdown",touchdown);
-  console.log("radius",lunarModuleRadius);
-  console.log("speed",lunarModuleSpeed);
-  // console.log("millis", millis());
-  console.log("timer", timer);
-  console.log("startTime", startTime);
-  console.log("timeSinceStart", timeSinceStart);
+  //console.log("speed2",speed2);
+  //console.log("touchdown",touchdown);
+  //console.log("radius",lunarModuleRadius);
+  //console.log("speed",lunarModuleSpeed);
+  //console.log("millis", millis());
+  //console.log("timer", timer);
+  //console.log("startTime", startTime);
+  //console.log("timeSinceStart", timeSinceStart);
 }
 
 function windowResized() {
