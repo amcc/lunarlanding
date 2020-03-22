@@ -24,7 +24,7 @@ let lunarModuleSpeed = speed2;
 let touchdown = 221000
 
 // record start time
-let timer;
+let timer = 0;
 let timeSinceStart;
 let startTime;
 let started = false;
@@ -97,7 +97,9 @@ function draw() {
   // on the recording
 
   timeSinceStart = millis();
-  timer = timeSinceStart - startTime;
+  if(startTime){
+    timer = timeSinceStart - startTime;
+  }
 
   if (lunarModuleRadius > moonDiameter) {
     lunarModuleRadius = (orbitRadius2 * (touchdown - timer) / touchdown) + moonDiameter;
@@ -106,8 +108,10 @@ function draw() {
     lunarModuleSpeed = (speed2 * (touchdown - timer) / touchdown) + speed;
   }
 
-  //console.log("radius",lunarModuleRadius);
-  // //console.log("speed",lunarModuleSpeed);
+  console.log("speed2",speed2);
+  console.log("touchdown",touchdown);
+  console.log("radius",lunarModuleRadius);
+  console.log("speed",lunarModuleSpeed);
   // console.log("millis", millis());
   console.log("timer", timer);
   console.log("startTime", startTime);
